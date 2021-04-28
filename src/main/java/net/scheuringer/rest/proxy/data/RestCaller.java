@@ -7,14 +7,15 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class RestCaller {
 	
-	private RestTemplate restTemplate = new RestTemplate();
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	public String getExternalDataAsString(String symbol) {
 		String url = "https://api.kraken.com/0/public/Ticker?pair=" + symbol;
 		
 		String jsonData = restTemplate.getForObject(url, String.class);
 		
-		return(jsonData);
+		return jsonData ;
 	}
 	
 	
